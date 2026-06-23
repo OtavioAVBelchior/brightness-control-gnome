@@ -53,6 +53,11 @@ make pack
 
 Upload `brilho-gnome@akafloor.com.br.zip` at <https://extensions.gnome.org/upload/>.
 
+## Links
+
+- **Repository:** <https://github.com/OtavioAVBelchior/brilho-gnome>
+- **GNOME Extensions:** <https://extensions.gnome.org/> (after submission)
+
 ## Project Structure
 
 ```
