@@ -1,0 +1,10 @@
+/* Brightness Control - GNOME Shell Extension */
+
+.brightness-control-slider {
+    margin-top: 2px;
+}
+
+.brightness-control-slider .slider {
+    /* Keeps slider visually aligned with GNOME's native sliders */
+    min-height: 16px;
+}
