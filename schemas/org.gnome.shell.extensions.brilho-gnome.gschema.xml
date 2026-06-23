@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.brilho-gnome"
+          path="/org/gnome/shell/extensions/brilho-gnome/">
+    <key name="step" type="i">
+      <default>5</default>
+      <summary>Passo do brilho</summary>
+      <description>Incremento percentual ao ajustar o brilho via teclado</description>
+    </key>
+  </schema>
+</schemalist>

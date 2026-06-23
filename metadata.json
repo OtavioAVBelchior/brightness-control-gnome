@@ -1,0 +1,9 @@
+{
+  "id": "brilho-gnome",
+  "uuid": "brilho-gnome@akafloor.com.br",
+  "name": "Brilho",
+  "description": "Controla o brilho dos monitores diretamente pelo painel rápido do GNOME",
+  "version": 1,
+  "shell-version": ["45", "46", "47", "48", "49", "50"],
+  "url": "https://github.com/otavio/brilho-gnome"
+}

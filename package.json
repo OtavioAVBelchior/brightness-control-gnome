@@ -1,0 +1,17 @@
+{
+  "name": "brilho-gnome",
+  "version": "1.0.0",
+  "description": "GNOME Shell extension to control monitor brightness",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "install-ext": "make install",
+    "pack": "make pack"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "@girs/gio-2.0": "2.88.0-4.0.4",
+    "@girs/glib-2.0": "2.88.0-4.0.4",
+    "@girs/gobject-2.0": "2.88.0-4.0.4"
+  }
+}
