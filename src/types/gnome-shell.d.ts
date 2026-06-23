@@ -11,6 +11,7 @@ declare module 'resource:///org/gnome/shell/ui/main.js' {
     };
     export const overview: any;
     export const messageTray: any;
+    export function notify(title: string, body?: string): void;
 }
 
 declare module 'resource:///org/gnome/shell/ui/quickSettings.js' {
@@ -31,10 +32,7 @@ declare module 'resource:///org/gnome/shell/ui/quickSettings.js' {
         slider: SliderWidget;
         iconName: string | null;
         menuEnabled: boolean;
-        _init(params?: {
-            iconName?: string;
-            menuEnabled?: boolean;
-        }): void;
+        _init(...args: any[]): void;
         destroy(): void;
     }
 
@@ -42,17 +40,13 @@ declare module 'resource:///org/gnome/shell/ui/quickSettings.js' {
         checked: boolean;
         title: string;
         iconName: string | null;
-        _init(params?: {
-            title?: string;
-            iconName?: string;
-            checked?: boolean;
-        }): void;
+        _init(...args: any[]): void;
         destroy(): void;
     }
 
     class SystemIndicator extends GObject.Object {
         quickSettingsItems: QuickSettings[];
-        _init(): void;
+        _init(...args: any[]): void;
         destroy(): void;
     }
 
