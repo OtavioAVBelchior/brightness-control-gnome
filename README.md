@@ -55,7 +55,7 @@ Upload `brilho-gnome@akafloor.com.br.zip` at <https://extensions.gnome.org/uploa
 
 ## Links
 
-- **Repository:** <https://github.com/OtavioAVBelchior/brilho-gnome>
+- **Repository:** <https://github.com/OtavioAVBelchior/brightness-control>
 - **GNOME Extensions:** <https://extensions.gnome.org/> (after submission)
 
 ## Project Structure
