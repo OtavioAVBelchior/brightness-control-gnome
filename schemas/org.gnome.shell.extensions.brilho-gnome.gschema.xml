@@ -4,8 +4,8 @@
           path="/org/gnome/shell/extensions/brilho-gnome/">
     <key name="step" type="i">
       <default>5</default>
-      <summary>Passo do brilho</summary>
-      <description>Incremento percentual ao ajustar o brilho via teclado</description>
+      <summary>Brightness step</summary>
+      <description>Percentage increment when adjusting brightness via keyboard</description>
     </key>
   </schema>
 </schemalist>

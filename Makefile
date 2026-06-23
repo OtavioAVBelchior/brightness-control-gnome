@@ -1,6 +1,5 @@
-UUID = brilho-gnome@akafloor.com.br
-INSTALL_DIR = $(HOME)/.local/share/gnome-shell/extensions/$(UUID)
-SCHEMA_DIR = schemas
+UUID     = brilho-gnome@akafloor.com.br
+INST_DIR = $(HOME)/.local/share/gnome-shell/extensions/$(UUID)
 
 .PHONY: all build install uninstall pack clean enable disable
 
@@ -8,32 +7,30 @@ all: build
 
 build:
 	npm run build
-	@echo "Build concluído em ./dist/"
 
 install: build
-	@mkdir -p $(INSTALL_DIR)
-	cp -r dist/* $(INSTALL_DIR)/
-	cp metadata.json $(INSTALL_DIR)/
-	@mkdir -p $(INSTALL_DIR)/schemas
-	cp $(SCHEMA_DIR)/*.xml $(INSTALL_DIR)/schemas/
-	glib-compile-schemas $(INSTALL_DIR)/schemas/
-	@echo "Extensão instalada em $(INSTALL_DIR)"
-	@echo "Reinicie o GNOME Shell (Alt+F2 → r) ou faça logout/login"
+	mkdir -p $(INST_DIR)/schemas
+	cp -r dist/* $(INST_DIR)/
+	cp metadata.json $(INST_DIR)/
+	cp schemas/*.xml $(INST_DIR)/schemas/
+	glib-compile-schemas $(INST_DIR)/schemas/
+	@echo "Extension installed. Restart GNOME Shell (Alt+F2 → r on X11, or log out/in on Wayland)."
 
 uninstall:
-	rm -rf $(INSTALL_DIR)
-	@echo "Extensão removida"
+	rm -rf $(INST_DIR)
+	@echo "Extension removed."
 
 pack: build
-	@mkdir -p _build/$(UUID)
+	mkdir -p _build/$(UUID)
 	cp -r dist/* _build/$(UUID)/
 	cp metadata.json _build/$(UUID)/
-	cp -r schemas _build/$(UUID)/
+	mkdir -p _build/$(UUID)/schemas
+	cp schemas/*.xml _build/$(UUID)/schemas/
 	glib-compile-schemas _build/$(UUID)/schemas/
 	cd _build && zip -r ../$(UUID).zip $(UUID)/
 	rm -rf _build
-	@echo "Pacote criado: $(UUID).zip"
-	@echo "Envie este arquivo em https://extensions.gnome.org/upload/"
+	@echo "Package ready: $(UUID).zip"
+	@echo "Upload at https://extensions.gnome.org/upload/"
 
 enable:
 	gnome-extensions enable $(UUID)

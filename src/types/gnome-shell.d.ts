@@ -1,5 +1,5 @@
-// Ambient type declarations for GNOME Shell internal modules
-// These are loaded at runtime by GJS from the GNOME Shell installation
+// Ambient type declarations for GNOME Shell internal modules.
+// These are loaded at runtime by GJS from the GNOME Shell installation.
 
 declare module 'resource:///org/gnome/shell/ui/main.js' {
     export const panel: {
@@ -15,7 +15,6 @@ declare module 'resource:///org/gnome/shell/ui/main.js' {
 
 declare module 'resource:///org/gnome/shell/ui/quickSettings.js' {
     import GObject from 'gi://GObject';
-    import St from 'gi://St';
 
     interface SliderWidget {
         value: number;
@@ -57,7 +56,7 @@ declare module 'resource:///org/gnome/shell/ui/quickSettings.js' {
         destroy(): void;
     }
 
-    export { QuickSlider, QuickToggle, SystemIndicator };
+    export {QuickSlider, QuickToggle, SystemIndicator};
 }
 
 declare module 'resource:///org/gnome/shell/extensions/extension.js' {
@@ -79,7 +78,7 @@ declare module 'resource:///org/gnome/shell/extensions/extension.js' {
         openPreferences(): void;
     }
 
-    export { Extension };
+    export {Extension};
     export default Extension;
 }
 
@@ -88,5 +87,5 @@ declare module 'gi://St' {
         connect(signal: string, callback: (...args: any[]) => any): number;
         destroy(): void;
     }
-    export default St;
+    export default Widget;
 }

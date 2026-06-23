@@ -21,17 +21,16 @@ const BRIGHTNESS_INTERFACE = `
 
 const BrightnessDBusProxy = Gio.DBusProxy.makeProxyWrapper(BRIGHTNESS_INTERFACE);
 
-const BrilhoSlider = GObject.registerClass(
-    class BrilhoSlider extends QuickSlider {
+const BrightnessSlider = GObject.registerClass(
+    class BrightnessSlider extends QuickSlider {
         private _proxy: any = null;
         private _proxyChangedId = 0;
-        private _sliderChangedId = 0;
         private _syncing = false;
 
         _init() {
             super._init({iconName: 'display-brightness-symbolic'});
 
-            this._sliderChangedId = this.slider.connect('notify::value', () => {
+            this.slider.connect('notify::value', () => {
                 if (!this._syncing)
                     this._setBrightness(Math.round(this.slider.value * 100));
             });
@@ -42,7 +41,7 @@ const BrilhoSlider = GObject.registerClass(
                 POWER_OBJECT_PATH,
                 (proxy: any, error: any) => {
                     if (error) {
-                        console.error(`Brilho: falha ao conectar ao daemon de energia: ${error.message}`);
+                        console.error(`Brightness Control: failed to connect to power daemon: ${error.message}`);
                         return;
                     }
                     this._proxy = proxy;
@@ -78,13 +77,13 @@ const BrilhoSlider = GObject.registerClass(
     }
 );
 
-const BrilhoIndicator = GObject.registerClass(
-    class BrilhoIndicator extends SystemIndicator {
+const BrightnessIndicator = GObject.registerClass(
+    class BrightnessIndicator extends SystemIndicator {
         private _slider: any;
 
         _init() {
             super._init();
-            this._slider = new BrilhoSlider();
+            this._slider = new BrightnessSlider();
             this.quickSettingsItems.push(this._slider);
         }
 
@@ -95,11 +94,11 @@ const BrilhoIndicator = GObject.registerClass(
     }
 );
 
-export default class BrilhoExtension extends Extension {
+export default class BrightnessControlExtension extends Extension {
     private _indicator: any = null;
 
     enable() {
-        this._indicator = new BrilhoIndicator();
+        this._indicator = new BrightnessIndicator();
         Main.panel.statusArea.quickSettings.addExternalIndicator(this._indicator);
     }
 

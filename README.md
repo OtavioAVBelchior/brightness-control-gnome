@@ -1,79 +1,81 @@
-# Brilho — GNOME Shell Extension
+# Brightness Control — GNOME Shell Extension
 
-Controle o brilho do seu monitor diretamente pelo painel rápido do GNOME Shell.
+A GNOME Shell extension that adds a brightness slider to the Quick Settings panel.
 
-## Funcionalidades
+## Features
 
-- Slider de brilho integrado ao painel rápido (Quick Settings)
-- Controle via D-Bus (`org.gnome.SettingsDaemon.Power.Screen`)
-- Compatível com GNOME Shell 45–50
-- Escrito em TypeScript
+- Brightness slider integrated into the GNOME Quick Settings panel
+- Controls display brightness via D-Bus (`org.gnome.SettingsDaemon.Power.Screen`)
+- Compatible with GNOME Shell 45–50
+- Written in TypeScript
 
-## Requisitos
+## Requirements
 
-- GNOME Shell 45 ou superior
-- Node.js 18+ e npm (apenas para desenvolvimento)
-- `glib-compile-schemas` (pacote `libglib2.0-bin` no Debian/Ubuntu)
+- GNOME Shell 45 or later
+- Node.js 18+ and npm (development only)
+- `glib-compile-schemas` (`libglib2.0-bin` on Debian/Ubuntu)
 
-## Desenvolvimento
+## Development
 
 ```bash
-# Instalar dependências
+# Install dependencies
 npm install
 
-# Compilar TypeScript
+# Build (compile TypeScript)
 npm run build
 
-# Instalar a extensão localmente
+# Install the extension locally
 make install
 
-# Recompilar ao salvar (modo watch)
+# Watch mode (recompile on save)
 npm run watch
 ```
 
-Após instalar, reinicie o GNOME Shell:
-- **X11:** pressione `Alt+F2`, digite `r` e pressione Enter
-- **Wayland:** faça logout e login novamente
+After installing, restart GNOME Shell:
 
-Depois ative a extensão:
+- **X11:** press `Alt+F2`, type `r`, press Enter
+- **Wayland:** log out and log back in
+
+Then enable the extension:
+
 ```bash
 gnome-extensions enable brilho-gnome@akafloor.com.br
 ```
 
-Ou use o aplicativo **GNOME Extensions**.
+Or use the **GNOME Extensions** app.
 
-## Publicar no extensions.gnome.org
+## Publishing to extensions.gnome.org
 
 ```bash
-# Gerar o pacote .zip para envio
+# Generate the submission package
 make pack
 ```
 
-Envie o arquivo `brilho-gnome@akafloor.com.br.zip` em https://extensions.gnome.org/upload/
+Upload `brilho-gnome@akafloor.com.br.zip` at <https://extensions.gnome.org/upload/>.
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 brilho-gnome/
 ├── src/
-│   ├── extension.ts        # Código principal da extensão
+│   ├── extension.ts              # Extension entry point
 │   └── types/
-│       └── gnome-shell.d.ts  # Declarações de tipo para GNOME Shell
+│       └── gnome-shell.d.ts      # GNOME Shell type declarations
 ├── schemas/
 │   └── org.gnome.shell.extensions.brilho-gnome.gschema.xml
-├── metadata.json           # Metadados da extensão (obrigatório)
+├── metadata.json                 # Extension manifest (required by GNOME)
 ├── tsconfig.json
 ├── package.json
 ├── Makefile
 └── LICENSE
 ```
 
-## Como Funciona
+## How It Works
 
-A extensão conecta ao serviço D-Bus `org.gnome.SettingsDaemon.Power` e lê/escreve
-a propriedade `Brightness` da interface `Power.Screen`. Isso é o mesmo mecanismo
-que o GNOME usa internamente para controlar o backlight do display.
+The extension connects to the `org.gnome.SettingsDaemon.Power` D-Bus service and
+reads/writes the `Brightness` property on the `Power.Screen` interface — the same
+mechanism GNOME uses internally to control the display backlight.
 
-## Licença
+## License
 
-GPL-2.0 — veja [LICENSE](LICENSE).
+GPL-2.0 — see [LICENSE](LICENSE).
